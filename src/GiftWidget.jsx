@@ -88,7 +88,7 @@ const GiftWidget = ({ merchantId = 'default' }) => {
     setInput('');
 
     try {
-        const res = await fetch('http://localhost:4242/analyze-intent', {
+        const res = await fetch('https://phpstack-1393490-6143252.cloudwaysapps.com/analyze-intent', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ message: input })
@@ -111,7 +111,7 @@ const GiftWidget = ({ merchantId = 'default' }) => {
       setCurrentAmount(amount);
       setMessages(prev => [...prev, { sender: 'bot', text: 'Generating secure checkout link...' }]);
       try {
-        const res = await fetch('http://localhost:4242/create-payment-intent', {
+        const res = await fetch('https://phpstack-1393490-6143252.cloudwaysapps.com/create-payment-intent', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ amount: amount * 100, merchantId }) 
@@ -125,7 +125,7 @@ const GiftWidget = ({ merchantId = 'default' }) => {
     setClientSecret(null); 
     setMessages(prev => [...prev, { sender: 'bot', text: 'Verifying transaction...' }]);
     try {
-        const res = await fetch('http://localhost:4242/verify-and-issue', {
+        const res = await fetch('https://phpstack-1393490-6143252.cloudwaysapps.com/verify-and-issue', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ paymentIntentId })
