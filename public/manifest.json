@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "GiftCardMVP",
+  "name": "Gift Card MVP Application",
   "icons": [
     {
       "src": "favicon.ico",
