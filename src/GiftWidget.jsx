@@ -16,7 +16,7 @@ const CheckoutForm = ({ clientSecret, onSuccess, amountDisplay }) => {
   const [error, setError] = useState(null);
   const [processing, setProcessing] = useState(false);
 
-  const handleSubmit = async (event) => {
+const handleSubmit = async (event) => {
     event.preventDefault();
     if (!stripe || !elements) return;
 
@@ -27,9 +27,11 @@ const CheckoutForm = ({ clientSecret, onSuccess, amountDisplay }) => {
         card: elements.getElement(CardElement),
         billing_details: { name: 'Chat Customer' },
       },
+      return_url: window.location.href, 
     });
 
     if (result.error) {
+      // If the user closes the 3DS popup or fails authentication
       setError(result.error.message);
       setProcessing(false);
     } else {
